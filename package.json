@@ -1,82 +1,85 @@
 {
-  "name": "incident-management",
-  "version": "1.0.0",
-  "description": "A simple CAP project.",
-  "repository": "<Add your repository here>",
-  "license": "UNLICENSED",
-  "private": true,
-  "dependencies": {
-    "@dxfrontier/cds-ts-dispatcher": "^1.0.0",
-    "@sap/cds": "^7",
-    "@sap/cds-hana": "^2",
-    "@sap/xssec": "^3",
-    "express": "^4",
-    "passport": "^0"
-  },
-  "devDependencies": {
-    "@cap-js/cds-typer": "^0",
-    "@cap-js/sqlite": "^1",
-    "@sap/cds-dk": "^7",
-    "@sap/ux-specification": "^1.120.3",
-    "@types/jest": "^29.5.12",
-    "@types/node": "^20.11.17",
-    "axios": "^1.6.7",
-    "chai": "^4.4.1",
-    "chai-as-promised": "^7.1.1",
-    "chai-subset": "^1.6.0",
-    "jest": "^29.7.0",
-    "npm-run-all": "^4.1.5",
-    "rimraf": "^5.0.5",
-    "ts-jest": "^29.1.2",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
-  },
-  "scripts": {
-    "start": "cds-serve",
-    "watch-ts": "cds-ts watch",
-    "watch-incidents": "cds-ts watch --open incidents/webapp/index.html?sap-ui-xx-viewCache=false",
-    "watch-incidents-launchpad": "cds-ts watch --open launchpage.html#Shell-home",
-    "test": "jest tests/test.ts",
-    "build:cds": "echo 'STEP 1: Build CDS' && cds build --production",
-    "build:ts": "echo 'STEP 2: Transpile TS => JS' && tsc",
-    "build:srv:clean:ts": "echo 'Step 3: Clean TS files from srv folder' && rimraf gen/srv/srv/**/*.ts --glob",
-    "build:production": "run-s build:cds build:ts build:srv:clean:ts"
-  },
-  "imports": {
-    "#cds-models/*": "./@cds-models/*/index.js"
-  },
-  "cds": {
-    "requires": {
-      "auth": {
-        "kind": "mocked",
-        "users": {
-          "incident.support@tester.sap.com": {
-            "password": "initial",
-            "roles": [
-              "support"
-            ]
-          },
-          "alice": {
-            "roles": [
-              "support"
-            ]
-          },
-          "bob": {
-            "roles": [
-              "support"
-            ]
-          }
+    "name": "incident-management",
+    "version": "1.0.0",
+    "description": "A simple CAP project.",
+    "repository": "<Add your repository here>",
+    "license": "UNLICENSED",
+    "private": true,
+    "dependencies": {
+        "@dxfrontier/cds-ts-dispatcher": "^1.0.0",
+        "@sap/cds": "^7",
+        "@sap/cds-hana": "^2",
+        "@sap/xssec": "^3",
+        "express": "^4",
+        "passport": "^0"
+    },
+    "devDependencies": {
+        "@cap-js/cds-typer": "^0",
+        "@cap-js/sqlite": "^1",
+        "@sap/cds-dk": "^7",
+        "@sap/ux-specification": "^1.120.3",
+        "@types/jest": "^29.5.12",
+        "@types/node": "^20.11.17",
+        "axios": "^1.6.7",
+        "chai": "^4.4.1",
+        "chai-as-promised": "^7.1.1",
+        "chai-subset": "^1.6.0",
+        "jest": "^29.7.0",
+        "npm-run-all": "^4.1.5",
+        "rimraf": "^5.0.5",
+        "ts-jest": "^29.1.2",
+        "ts-node": "^10.9.2",
+        "typescript": "^5.3.3"
+    },
+    "scripts": {
+        "start": "cds-serve",
+        "watch-ts": "cds-ts watch",
+        "watch-incidents": "cds-ts watch --open incidents/webapp/index.html?sap-ui-xx-viewCache=false",
+        "watch-incidents-launchpad": "cds-ts watch --open launchpage.html#Shell-home",
+        "test": "jest tests/test.ts",
+        "build:cds": "echo 'STEP 1: Build CDS' && cds build --production",
+        "build:ts": "echo 'STEP 2: Transpile TS to JS' && tsc",
+        "build:srv:clean:ts": "echo 'Step 3: Clean TS files from srv folder' && rimraf gen/srv/srv/**/*.ts --glob",
+        "build:production": "run-s build:cds build:ts build:srv:clean:ts",
+        "undeploy": "cf undeploy incident-management --delete-services --delete-service-keys --delete-service-brokers",
+        "build": "rimraf resources mta_archives && mbt build --mtar archive",
+        "deploy": "cf deploy mta_archives/archive.mtar --retries 1"
+    },
+    "imports": {
+        "#cds-models/*": "./@cds-models/*/index.js"
+    },
+    "cds": {
+        "requires": {
+            "auth": {
+                "kind": "mocked",
+                "users": {
+                    "incident.support@tester.sap.com": {
+                        "password": "initial",
+                        "roles": [
+                            "support"
+                        ]
+                    },
+                    "alice": {
+                        "roles": [
+                            "support"
+                        ]
+                    },
+                    "bob": {
+                        "roles": [
+                            "support"
+                        ]
+                    }
+                }
+            },
+            "[production]": {
+                "db": "hana",
+                "auth": {
+                    "kind": "xsuaa"
+                }
+            }
         }
-      },
-      "[production]": {
-        "db": "hana",
-        "auth": {
-          "kind": "xsuaa"
-        }
-      }
-    }
-  },
-  "sapux": [
-    "app/incidents"
-  ]
+    },
+    "sapux": [
+        "app/incidents"
+    ]
 }
