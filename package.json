@@ -37,6 +37,7 @@
     "watch-incidents": "cds-ts watch --open incidents/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-incidents-launchpad": "cds-ts watch --open launchpage.html#Shell-home",
     "test": "jest tests/test.ts",
+    "build:models": "npx @cap-js/cds-typer '*' --outputDirectory @cds-models",
     "build:cds": "echo 'STEP 1: Build CDS' && cds build --production",
     "build:ts": "echo 'STEP 2: Transpile TS to JS' && tsc",
     "build:srv:clean:ts": "echo 'Step 3: Clean TS files from srv folder' && rimraf gen/srv/srv/**/*.ts --glob",

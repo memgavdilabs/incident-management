@@ -1,10 +1,10 @@
-# Introduction
+## Introduction
 
 Welcome to the sample Incident Management Typescript CAP application.
 The main purpose of the application is to serve as a template/reference point for developing SAP CAP applications using the new CDS-TS Dispatcher (https://github.com/dxfrontier/cds-ts-dispatcher) and other new libraries, methodologies and best-practices.
 The use case is pretty simple: allow users to view, edit and create incidents.
 
-# Project Structure
+## Project Structure
 
 ```
 .
@@ -50,7 +50,7 @@ Login to Github and clone the repository at https://github.com/memgavdilabs/inci
 
 ## Preliminaries
 
-1. Ensure you have the latest LTS version of Node.js, [**@sap/cds-dk**] and setup your local development (see [Setup for Local Development](https://cap.cloud.sap/docs/get-started/jumpstart#setup))
+1. Ensure you have the latest LTS version of Node.js, @sap/cds-dk and setup your local development (see [Setup for Local Development](https://cap.cloud.sap/docs/get-started/jumpstart#setup))
 2. Ensure you have the latest version of MTA Build Tool (mbt)
    ```sh
     mbt -v
@@ -65,6 +65,14 @@ Login to Github and clone the repository at https://github.com/memgavdilabs/inci
    npm install
    ```
    Also ensure to run the above command in the app > incidents folder
+
+## Generating the @cds-models folder
+
+- To generate the @cds-models folder which will contain the types you can do so using automatically, by opening your _service.cds_ file and saving the file.
+  Alternatively, you can also generate it manually, from the root folder, in a terminal run
+  ```sh
+  npm run build:models
+  ```
 
 ## Running the project locally
 
