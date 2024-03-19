@@ -17,6 +17,7 @@
       "es2022"
     ],
     "outDir": "./gen/srv",
+    "rootDir": "./",
     "checkJs": true,
     "paths": {
       "#cds-models/*": [
@@ -25,6 +26,6 @@
     }
   },
   "include": [
-    "./srv"
-  ]
+    "./srv","./@cds-models"
+  ],
 }
