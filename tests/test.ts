@@ -2,7 +2,10 @@ import axios, { AxiosResponse } from "axios";
 import cds from "@sap/cds";
 import { stat } from "fs";
 
-const { GET, POST, PATCH, DELETE, expect } = cds.test(__dirname + "../../");
+const { GET, POST, PATCH, DELETE, expect } = cds.test(
+  __dirname + "../../",
+  "--with-mocks"
+);
 
 axios.defaults.auth = {
   username: "incident.support@tester.sap.com",

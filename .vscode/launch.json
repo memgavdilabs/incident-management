@@ -5,19 +5,39 @@
   "version": "0.2.0",
   "configurations": [
     {
+      "name": "Attach to a Cloud Foundry Instance on Port 9229",
+      "port": 9229,
+      "request": "attach",
+      "type": "node",
+      "localRoot": "${workspaceFolder}",
+      "remoteRoot": "/home/vcap/app",
+      "address": "localhost",
+      "sourceMaps": true,
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**"
+      ]
+    },
+    {
+      "name": "Attach by Process ID",
+      "processId": "${command:PickProcess}",
+      "request": "attach",
+      "skipFiles": ["<node_internals>/**"],
+      "type": "node",
+      "sourceMaps": true,
+      "resolveSourceMapLocations": [
+        "${workspaceFolder}/**",
+        "!**/node_modules/**"
+      ]
+    },
+    {
       "name": "cds serve",
       "request": "launch",
       "type": "node",
       "cwd": "${workspaceFolder}",
       "runtimeExecutable": "cds",
-      "args": [
-        "serve",
-        "--with-mocks",
-        "--in-memory?"
-      ],
-      "skipFiles": [
-        "<node_internals>/**"
-      ]
+      "args": ["serve", "--with-mocks", "--in-memory?"],
+      "skipFiles": ["<node_internals>/**"]
     }
   ]
 }

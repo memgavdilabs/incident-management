@@ -3,7 +3,7 @@ import {
   BeforeCreate,
   BeforeUpdate,
   EntityHandler,
-  TypedRequest,
+  type TypedRequest,
 } from "@dxfrontier/cds-ts-dispatcher";
 
 @EntityHandler(Incident)

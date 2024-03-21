@@ -24,6 +24,7 @@ modules:
     requires:
       - name: incident-management-auth
       - name: incident-management-db
+      - name: incident-management-destination-service
     provides:
       - name: srv-api # required by consumers of CAP services (e.g. approuter, destinations)
         properties:
