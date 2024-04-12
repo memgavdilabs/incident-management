@@ -6,6 +6,7 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@cap-js/change-tracking": "^1.0.5",
     "@dxfrontier/cds-ts-dispatcher": "^1.0.0",
     "@gavdi/caplog": "^2.4.8",
     "@sap-cloud-sdk/connectivity": "^3.12.1",
@@ -42,7 +43,7 @@
     "watch-incidents": "cds-ts watch --open incidents/webapp/index.html?sap-ui-xx-viewCache=false",
     "watch-incidents-launchpad": "cds-ts watch --open launchpage.html#Shell-home",
     "test": "jest tests/test.ts",
-    "build:models": "npx @cap-js/cds-typer ./srv/processor-service.cds --outputDirectory @cds-models",
+    "build:models": "npx @cap-js/cds-typer \"*\" --outputDirectory @cds-models",
     "build:cds": "echo 'STEP 1: Build CDS' && cds build --production",
     "build:ts": "echo 'STEP 2: Transpile TS to JS' && tsc",
     "build:srv:clean:ts": "echo 'Step 3: Clean TS files from srv folder' && rimraf gen/srv/srv/**/*.ts --glob",

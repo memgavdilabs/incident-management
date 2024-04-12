@@ -21,7 +21,7 @@ entity Incidents : cuid, managed {
 
 entity Conversations {
     key ID        : UUID;
-    key parent    : Association to Incidents;
+        parent    : Association to Incidents;
         timestamp : type of managed : createdAt;
         author    : type of managed : createdBy;
         message   : String;
