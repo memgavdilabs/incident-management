@@ -6,6 +6,7 @@
   "license": "UNLICENSED",
   "private": true,
   "dependencies": {
+    "@cap-js/audit-logging": "^0.6.0",
     "@cap-js/change-tracking": "^1.0.5",
     "@dxfrontier/cds-ts-dispatcher": "^1.0.0",
     "@gavdi/caplog": "^2.4.8",
@@ -51,7 +52,7 @@
     "build:mta": "rimraf resources mta_archives && mbt build --mtar archive",
     "deploy:cf": "cf deploy mta_archives/archive.mtar --retries 1",
     "deploy": "npm run build:mta && npm run deploy:cf",
-    "undeploy": "cf undeploy incident-management --delete-services --delete-service-keys --delete-service-brokers"
+    "undeploy": "cf undeploy incident-management --delete-services"
   },
   "imports": {
     "#cds-models/*": "./@cds-models/*/index.js"
@@ -69,7 +70,8 @@
           },
           "alice": {
             "roles": [
-              "support"
+              "support",
+              "admin"
             ]
           },
           "bob": {

@@ -25,6 +25,7 @@ modules:
       - name: incident-management-auth
       - name: incident-management-db
       - name: incident-management-destination-service
+      - name: incident-management-audit-log
     provides:
       - name: srv-api # required by consumers of CAP services (e.g. approuter, destinations)
         properties:
@@ -178,3 +179,11 @@ resources:
     parameters:
       service: html5-apps-repo
       service-plan: app-runtime
+
+  # --------------------------------------------------------------
+  - name: incident-management-audit-log
+    # ------------------------------------------------------------
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: auditlog-management
+      service-plan: default
